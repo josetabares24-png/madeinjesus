@@ -7,52 +7,49 @@ import { SectionLabel } from "@/components/SectionLabel";
 
 export function MeetingsSection() {
   return (
-    <section id="reuniones" className="bg-ink px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+    <section id="reuniones" className="bg-[#080807] px-5 py-28 sm:px-8 lg:px-12 lg:py-40">
       <div className="mx-auto max-w-[92rem]">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-14 flex flex-col justify-between gap-8 border-b border-white/10 pb-10 md:flex-row md:items-end"
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-16 grid gap-10 border-t border-white/12 pt-10 lg:grid-cols-[0.62fr_1fr] lg:items-end"
         >
-          <div className="space-y-7">
-            <SectionLabel index="03" label="Reuniones" />
-            <h2 className="max-w-3xl font-serif text-5xl uppercase leading-[0.92] text-bone sm:text-7xl">
-              Nos reunimos
-              <span className="block text-bone/62">para buscarle.</span>
+          <SectionLabel index="03" label="Reuniones" />
+          <div className="space-y-8">
+            <h2 className="max-w-4xl font-serif text-5xl uppercase leading-[0.86] text-[#f5f0e8] sm:text-7xl lg:text-[6.8rem]">
+              Nos reunimos para buscarle.
             </h2>
+            <a
+              href="https://maps.google.com/"
+              className="eyebrow group inline-flex items-center gap-3 border-b border-[#c58b3b]/60 pb-2 text-[#c58b3b]"
+            >
+              Cómo llegar
+              <ArrowUpRight className="h-4 w-4 transition group-hover:rotate-45" />
+            </a>
           </div>
-          <a
-            href="https://maps.google.com/"
-            className="group inline-flex w-fit items-center gap-3 rounded-full border border-bone/18 px-5 py-3 text-[0.68rem] font-semibold uppercase tracking-editorial text-bone/78 transition hover:border-ember hover:text-ember"
-          >
-            Cómo llegar
-            <ArrowUpRight className="h-4 w-4 transition group-hover:rotate-45" />
-          </a>
         </motion.div>
 
-        <div className="grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-3">
+        <div className="border-y border-white/12">
           {meetings.map((meeting, index) => (
             <motion.article
               key={meeting.title}
               initial={{ opacity: 0, y: 34 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.75, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="group bg-ink p-7 transition duration-500 hover:bg-[#11100e]"
+              transition={{ duration: 0.72, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="group grid gap-5 border-b border-white/10 py-7 last:border-b-0 md:grid-cols-[0.18fr_0.42fr_1fr_0.38fr] md:items-center"
             >
-              <div className="mb-20 flex items-start justify-between gap-8">
-                <p className="text-[0.68rem] font-semibold uppercase tracking-editorial text-ember">
-                  {meeting.day}
-                </p>
-                <span className="font-serif text-5xl text-bone/18 transition group-hover:text-ember/70">
-                  0{index + 1}
-                </span>
+              <p className="eyebrow text-[#c58b3b]">{meeting.number}</p>
+              <p className="eyebrow text-[#f5f0e8]/58">{meeting.day}</p>
+              <div>
+                <h3 className="font-serif text-4xl uppercase leading-none text-[#f5f0e8] transition group-hover:text-[#c58b3b]">
+                  {meeting.title}
+                </h3>
+                <p className="mt-3 max-w-md text-sm leading-6 text-[#b8aa98]">{meeting.description}</p>
               </div>
-              <h3 className="font-serif text-4xl uppercase leading-none text-bone">{meeting.title}</h3>
-              <p className="mt-5 text-sm uppercase tracking-[0.1em] text-bone/64">{meeting.time}</p>
-              <p className="mt-8 max-w-xs text-sm leading-6 text-muted">{meeting.note}</p>
+              <p className="eyebrow text-[#f5f0e8]/78 md:text-right">{meeting.time}</p>
             </motion.article>
           ))}
         </div>

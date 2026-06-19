@@ -6,46 +6,43 @@ import { contactActions } from "@/lib/data";
 
 export function ContactSection() {
   return (
-    <section
-      id="visitanos"
-      className="relative overflow-hidden bg-coal px-5 py-24 sm:px-8 lg:px-12 lg:py-36"
-    >
-      <div className="absolute inset-0 bg-radial-fade" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ember/50 to-transparent" />
+    <section id="visitanos" className="relative overflow-hidden bg-[#050505] px-5 py-28 sm:px-8 lg:px-12 lg:py-40">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_22%,rgba(197,139,59,0.16),transparent_30%)]" />
 
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 mx-auto grid max-w-[92rem] gap-12 lg:grid-cols-[1fr_0.62fr] lg:items-end"
+        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-10 mx-auto grid max-w-[92rem] gap-14 border-t border-white/12 pt-10 lg:grid-cols-[1fr_0.58fr] lg:items-end"
       >
         <div>
-          <p className="mb-7 text-[0.68rem] font-semibold uppercase tracking-editorial text-ember">
-            Contacto / Visítanos
-          </p>
-          <h2 className="max-w-5xl font-serif text-6xl uppercase leading-[0.82] text-bone sm:text-8xl lg:text-[8rem]">
+          <p className="eyebrow mb-8 text-[#c58b3b]">Contacto / Visítanos</p>
+          <h2 className="max-w-5xl font-serif text-6xl uppercase leading-[0.8] text-[#f5f0e8] sm:text-8xl lg:text-[8.4rem]">
             ¿Vienes por primera vez?
           </h2>
-          <p className="mt-9 max-w-xl text-lg leading-8 text-muted">
+          <p className="mt-9 max-w-xl text-lg leading-8 text-[#b8aa98]">
             Queremos conocerte, recibirte y ayudarte a dar tu próximo paso.
           </p>
         </div>
 
-        <div className="space-y-4">
-          <div className="mb-8 grid h-28 w-28 place-items-center rounded-full border border-ember/40 text-ember">
+        <div>
+          <div className="mb-10 grid h-24 w-24 place-items-center rounded-full border border-[#c58b3b]/48 text-[#c58b3b]">
             <Cross className="h-8 w-8" />
           </div>
-          {contactActions.map((action) => (
-            <a
-              key={action.label}
-              href={action.href}
-              className="group flex items-center justify-between gap-5 border-b border-white/10 py-5 text-sm font-semibold uppercase tracking-editorial text-bone/80 transition hover:border-ember/60 hover:text-ember"
-            >
-              <span>{action.label}</span>
-              <ArrowUpRight className="h-5 w-5 shrink-0 transition group-hover:rotate-45" />
-            </a>
-          ))}
+
+          <div className="border-y border-white/12">
+            {contactActions.map((action) => (
+              <a
+                key={action.label}
+                href={action.href}
+                className="eyebrow group flex items-center justify-between gap-5 border-b border-white/10 py-5 text-[#f5f0e8]/76 transition duration-300 last:border-b-0 hover:text-[#c58b3b]"
+              >
+                <span>{action.label}</span>
+                <ArrowUpRight className="h-5 w-5 shrink-0 transition group-hover:rotate-45" />
+              </a>
+            ))}
+          </div>
         </div>
       </motion.div>
     </section>

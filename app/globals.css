@@ -1,7 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-display: "Cormorant Garamond", "Playfair Display", "Iowan Old Style", Georgia, serif;
   --font-sans: "Inter", "Aptos", "Segoe UI", Arial, sans-serif;
-  --selection: rgba(200, 145, 76, 0.34);
+  --ink: #050505;
+  --bone: #f5f0e8;
+  --muted: #b8aa98;
+  --amber: #c58b3b;
 }
 
 * {
@@ -10,21 +17,23 @@
 
 html {
   scroll-behavior: smooth;
-  background: #050505;
+  background: var(--ink);
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18rem),
-    #050505;
-  color: #f3eadb;
+    linear-gradient(180deg, rgba(197, 139, 59, 0.08), transparent 18rem),
+    var(--ink);
+  color: var(--bone);
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background: var(--selection);
-  color: #fff8ea;
+  background: rgba(197, 139, 59, 0.35);
+  color: white;
 }
 
 a {
@@ -37,16 +46,33 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-.noise {
+.editorial-shell {
+  width: min(100% - 2rem, 92rem);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.warm-border {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.grain {
+  pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 1;
-  pointer-events: none;
-  opacity: 0.16;
+  opacity: 0.12;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 42px 42px;
   mix-blend-mode: screen;
 }
 
