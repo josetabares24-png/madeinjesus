@@ -11,25 +11,25 @@ export const heroSlides = [
     label: "UNA CASA · UNA FE · UN NOMBRE",
     title: ["MADE", "IN JESÚS"],
     subtitle: "Hechos por Él. Hechos para Él.",
-    image: "/images/hero-1.jpg"
+    image: "/images/home-test-1.png"
   },
   {
     label: "IDENTIDAD",
     title: ["NO ES", "UNA MARCA"],
     subtitle: "Es una identidad formada en Jesús.",
-    image: "/images/hero-2.jpg"
+    image: "/images/home-test-2.png"
   },
   {
     label: "COMUNIDAD",
     title: ["NO CAMINES", "SOLO"],
     subtitle: "Hay una casa para ti.",
-    image: "/images/hero-3.jpg"
+    image: "/images/home-test-1.png"
   },
   {
     label: "PROPÓSITO",
     title: ["HECHOS", "PARA ÉL"],
     subtitle: "Una generación enviada con propósito.",
-    image: "/images/hero-4.jpg"
+    image: "/images/home-test-2.png"
   }
 ];
 
