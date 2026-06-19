@@ -13,7 +13,7 @@ export function MeetingsSection() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.85, ease: "easeOut" }}
           className="mb-16 grid gap-10 border-t border-white/12 pt-10 lg:grid-cols-[0.62fr_1fr] lg:items-end"
         >
           <SectionLabel index="03" label="Reuniones" />
@@ -38,7 +38,7 @@ export function MeetingsSection() {
               initial={{ opacity: 0, y: 34 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.72, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.72, delay: index * 0.08, ease: "easeOut" }}
               className="group grid gap-5 border-b border-white/10 py-7 last:border-b-0 md:grid-cols-[0.18fr_0.42fr_1fr_0.38fr] md:items-center"
             >
               <p className="eyebrow text-[#c58b3b]">{meeting.number}</p>

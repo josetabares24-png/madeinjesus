@@ -12,7 +12,7 @@ export function CommunitySection() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.85, ease: "easeOut" }}
           className="space-y-10 lg:sticky lg:top-28 lg:self-start"
         >
           <SectionLabel index="05" label="Comunidad" />
@@ -29,7 +29,7 @@ export function CommunitySection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.72, delay: index * 0.055, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.72, delay: index * 0.055, ease: "easeOut" }}
               className="group grid grid-cols-[4rem_1fr] items-center border-b border-white/10 py-7 last:border-b-0"
             >
               <p className="eyebrow text-[#c58b3b]">{String(index + 1).padStart(2, "0")}</p>

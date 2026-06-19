@@ -13,7 +13,7 @@ export function ContactSection() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.85, ease: "easeOut" }}
         className="relative z-10 mx-auto grid max-w-[92rem] gap-14 border-t border-white/12 pt-10 lg:grid-cols-[1fr_0.58fr] lg:items-end"
       >
         <div>

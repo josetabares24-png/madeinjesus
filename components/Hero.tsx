@@ -30,7 +30,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 26 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.95, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.95, delay: 0.15, ease: "easeOut" }}
         className="relative z-10 mx-auto flex h-full w-full max-w-[92rem] flex-col justify-end"
       >
         <div className="mb-8 md:mb-12">

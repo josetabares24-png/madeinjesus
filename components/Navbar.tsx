@@ -8,7 +8,7 @@ export function Navbar() {
     <motion.header
       initial={{ opacity: 0, y: -18 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.85, ease: "easeOut" }}
       className="fixed left-0 right-0 top-0 z-50 px-5 py-5 sm:px-8 lg:px-12"
     >
       <nav className="mx-auto flex max-w-[92rem] items-center justify-between gap-8 border-b border-white/10 pb-5">

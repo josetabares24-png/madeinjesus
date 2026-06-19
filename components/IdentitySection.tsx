@@ -10,7 +10,7 @@ export function IdentitySection() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.85, ease: "easeOut" }}
         className="mx-auto grid max-w-[92rem] gap-12 border-t border-white/12 pt-10 lg:grid-cols-[0.9fr_1.1fr]"
       >
         <div className="space-y-8">

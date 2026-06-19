@@ -14,7 +14,7 @@ export function MessagesSection() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.85, ease: "easeOut" }}
           className="mb-16 grid gap-10 border-t border-white/12 pt-10 lg:grid-cols-[0.52fr_1fr]"
         >
           <SectionLabel index="04" label="Mensajes" />
@@ -30,7 +30,7 @@ export function MessagesSection() {
               initial={{ opacity: 0, y: 36 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.75, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.75, delay: index * 0.08, ease: "easeOut" }}
               className="group border-t border-white/12 pt-5"
             >
               <div className={`relative overflow-hidden ${index === 0 ? "aspect-[16/10] lg:aspect-[4/5]" : "aspect-[4/5]"}`}>
