@@ -1,9 +1,10 @@
 export const navItems = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Identidad", href: "#identidad" },
-  { label: "Reuniones", href: "#reuniones" },
-  { label: "Mensajes", href: "#mensajes" },
-  { label: "Visítanos", href: "#visitanos" }
+  { label: "Inicio", href: "/" },
+  { label: "Identidad", href: "/identidad" },
+  { label: "Reuniones", href: "/reuniones" },
+  { label: "Mensajes", href: "/mensajes" },
+  { label: "Comunidad", href: "/comunidad" },
+  { label: "Visítanos", href: "/contacto" }
 ];
 
 export const heroSlides = [
@@ -79,6 +80,44 @@ export const communityGroups = [
   "Niños",
   "Discipulado",
   "Oración"
+];
+
+export const explorePages = [
+  {
+    index: "01",
+    label: "Identidad",
+    title: "No es una marca. Es una identidad.",
+    description: "Quiénes somos y en quién creemos.",
+    href: "/identidad"
+  },
+  {
+    index: "02",
+    label: "Reuniones",
+    title: "Nos reunimos para buscarle.",
+    description: "Días, horarios y cómo llegar.",
+    href: "/reuniones"
+  },
+  {
+    index: "03",
+    label: "Mensajes",
+    title: "Palabras que despiertan fe.",
+    description: "Predicaciones y series recientes.",
+    href: "/mensajes"
+  },
+  {
+    index: "04",
+    label: "Comunidad",
+    title: "No camines solo.",
+    description: "Grupos para crecer en familia.",
+    href: "/comunidad"
+  },
+  {
+    index: "05",
+    label: "Visítanos",
+    title: "¿Vienes por primera vez?",
+    description: "Queremos conocerte y recibirte.",
+    href: "/contacto"
+  }
 ];
 
 export const contactActions = [

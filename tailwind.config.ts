@@ -14,7 +14,9 @@ const config: Config = {
         bone: "#f3eadb",
         muted: "#b8ab99",
         ember: "#c8914c",
-        brass: "#9f7138"
+        brass: "#9f7138",
+        cream: "#f8f1e3",
+        espresso: "#2b2013"
       },
       fontFamily: {
         serif: ["var(--font-display)", "Georgia", "serif"],
@@ -23,6 +25,9 @@ const config: Config = {
       letterSpacing: {
         editorial: "0.14em"
       },
+      opacity: Object.fromEntries(
+        Array.from({ length: 101 }, (_, i) => [i, (i / 100).toString()])
+      ),
       backgroundImage: {
         "radial-fade": "radial-gradient(circle at 50% 36%, rgba(200,145,76,0.17), transparent 34%)"
       },

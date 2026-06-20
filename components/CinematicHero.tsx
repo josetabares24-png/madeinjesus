@@ -43,7 +43,6 @@ export function CinematicHero() {
 
   return (
     <section
-      id="inicio"
       className="relative h-screen min-h-screen w-full overflow-hidden bg-ink px-5 sm:px-8 lg:px-12"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -130,8 +129,8 @@ export function CinematicHero() {
 
           <div className="flex md:justify-end">
             <a
-              href="#identidad"
-              aria-label="Bajar a identidad"
+              href="#explora"
+              aria-label="Bajar a contenido"
               className="group grid h-16 w-16 place-items-center rounded-full border border-white/24 bg-ink/22 text-bone backdrop-blur transition duration-500 hover:scale-105 hover:rotate-6 hover:border-ember hover:text-ember md:h-20 md:w-20"
             >
               <ArrowDown className="h-6 w-6 transition duration-500 group-hover:translate-y-1" />
