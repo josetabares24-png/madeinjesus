@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { MouseEvent } from "react";
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion, useSpring } from "framer-motion";
 import { heroSlides } from "@/lib/data";
 
 const SLIDE_SECONDS = 6.5;
@@ -13,6 +14,9 @@ export function CinematicHero() {
   const [index, setIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
 
+  const tiltX = useSpring(0, { stiffness: 60, damping: 18, mass: 0.4 });
+  const tiltY = useSpring(0, { stiffness: 60, damping: 18, mass: 0.4 });
+
   useEffect(() => {
     if (shouldReduceMotion) return;
     const timer = setInterval(() => {
@@ -21,12 +25,28 @@ export function CinematicHero() {
     return () => clearInterval(timer);
   }, [shouldReduceMotion]);
 
+  function handleMouseMove(event: MouseEvent<HTMLDivElement>) {
+    if (shouldReduceMotion) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const px = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const py = (event.clientY - bounds.top) / bounds.height - 0.5;
+    tiltY.set(px * -6);
+    tiltX.set(py * 4);
+  }
+
+  function handleMouseLeave() {
+    tiltX.set(0);
+    tiltY.set(0);
+  }
+
   const slide = heroSlides[index];
 
   return (
     <section
       id="inicio"
       className="relative h-screen min-h-screen w-full overflow-hidden bg-ink px-5 sm:px-8 lg:px-12"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="grain" />
 
@@ -35,17 +55,16 @@ export function CinematicHero() {
           <motion.div
             key={heroSlide.image}
             className="absolute inset-0"
+            style={{ rotateX: tiltX, rotateY: tiltY }}
             initial={false}
             animate={
               slideIndex === index
-                ? { opacity: 1, scale: [1.05, 1.16], rotateX: [2.5, 0], rotateY: [-2, 0] }
-                : { opacity: 0, scale: 1.05, rotateX: 0, rotateY: 0 }
+                ? { opacity: 1, scale: [1.04, 1.12] }
+                : { opacity: 0, scale: 1.04 }
             }
             transition={{
               opacity: { duration: shouldReduceMotion ? 0 : FADE_SECONDS, ease: "easeInOut" },
-              scale: { duration: shouldReduceMotion ? 0 : SLIDE_SECONDS + FADE_SECONDS, ease: "easeOut" },
-              rotateX: { duration: shouldReduceMotion ? 0 : 1.4, ease: "easeOut" },
-              rotateY: { duration: shouldReduceMotion ? 0 : 1.4, ease: "easeOut" }
+              scale: { duration: shouldReduceMotion ? 0 : SLIDE_SECONDS + FADE_SECONDS, ease: "easeOut" }
             }}
           >
             <Image
