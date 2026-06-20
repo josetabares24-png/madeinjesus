@@ -59,11 +59,12 @@ export function CinematicHero() {
             initial={false}
             animate={
               slideIndex === index
-                ? { opacity: 1, scale: [1.04, 1.12] }
-                : { opacity: 0, scale: 1.04 }
+                ? { opacity: 1, scale: [1.04, 1.12], filter: ["blur(18px)", "blur(0px)"] }
+                : { opacity: 0, scale: 1.04, filter: "blur(12px)" }
             }
             transition={{
               opacity: { duration: shouldReduceMotion ? 0 : FADE_SECONDS, ease: "easeInOut" },
+              filter: { duration: shouldReduceMotion ? 0 : FADE_SECONDS, ease: "easeInOut" },
               scale: { duration: shouldReduceMotion ? 0 : SLIDE_SECONDS + FADE_SECONDS, ease: "easeOut" }
             }}
           >
