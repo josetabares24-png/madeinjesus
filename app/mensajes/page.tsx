@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { MessagesSection } from "@/components/MessagesSection";
-import { ReelsSection } from "@/components/ReelsSection";
 
 export const metadata: Metadata = {
   title: "Mensajes — Made in Jesús",
@@ -11,7 +10,6 @@ export default function MensajesPage() {
   return (
     <main>
       <MessagesSection />
-      <ReelsSection />
     </main>
   );
 }

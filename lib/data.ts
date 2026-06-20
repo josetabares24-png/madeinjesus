@@ -54,6 +54,20 @@ export const meetings = [
 
 export const messages = [
   {
+    category: "Devocional",
+    title: "Tres pasos para un tiempo con Dios",
+    series: "Píldoras de fe",
+    image: "/images/reel-1-poster.jpg",
+    video: "/videos/reel-1.mp4"
+  },
+  {
+    category: "Devocional",
+    title: "Estudiando Su Palabra",
+    series: "Píldoras de fe",
+    image: "/images/reel-2-poster.jpg",
+    video: "/videos/reel-2.mp4"
+  },
+  {
     category: "Mensaje reciente",
     title: "Formados por Jesús",
     series: "Serie de identidad",
@@ -70,19 +84,6 @@ export const messages = [
     title: "Enviados con propósito",
     series: "Vida misional",
     image: "/images/message-3.jpg"
-  }
-];
-
-export const reels = [
-  {
-    src: "/videos/reel-1.mp4",
-    poster: "/images/reel-1-poster.jpg",
-    caption: "Tres pasos sencillos para un tiempo con Dios."
-  },
-  {
-    src: "/videos/reel-2.mp4",
-    poster: "/images/reel-2-poster.jpg",
-    caption: "Estudiando Su Palabra."
   }
 ];
 
