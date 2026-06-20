@@ -2,13 +2,11 @@
 
 import { useState } from "react";
 import type { MouseEvent } from "react";
-import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion, useSpring } from "framer-motion";
 import { heroSlides } from "@/lib/data";
 
 const SLIDE_SECONDS = 6.5;
-const FADE_SECONDS = 1.6;
 
 export function CinematicHero() {
   const [index, setIndex] = useState(0);
@@ -48,37 +46,18 @@ export function CinematicHero() {
       onMouseLeave={handleMouseLeave}
     >
       <div className="absolute inset-0 z-0 bg-ink" style={{ perspective: 1200 }}>
-        {heroSlides.map((heroSlide, slideIndex) => (
-          <motion.div
-            key={heroSlide.image}
-            className="absolute inset-0"
-            style={{ rotateX: tiltX, rotateY: tiltY }}
-            initial={false}
-            animate={
-              slideIndex === index
-                ? {
-                    opacity: 1,
-                    scale: slideIndex % 2 === 0 ? [1.04, 1.13] : [1.13, 1.04],
-                    filter: ["blur(18px)", "blur(0px)"]
-                  }
-                : { opacity: 0, scale: slideIndex % 2 === 0 ? 1.04 : 1.13, filter: "blur(12px)" }
-            }
-            transition={{
-              opacity: { duration: shouldReduceMotion ? 0 : FADE_SECONDS, ease: "easeInOut" },
-              filter: { duration: shouldReduceMotion ? 0 : FADE_SECONDS, ease: "easeInOut" },
-              scale: { duration: shouldReduceMotion ? 0 : SLIDE_SECONDS + FADE_SECONDS, ease: "easeOut" }
-            }}
+        <motion.div className="absolute inset-0" style={{ rotateX: tiltX, rotateY: tiltY }}>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/images/cielo-hero-poster.jpg"
+            className="h-full w-full object-cover"
           >
-            <Image
-              src={heroSlide.image}
-              alt=""
-              fill
-              priority={slideIndex === 0}
-              sizes="100vw"
-              className="object-cover"
-            />
-          </motion.div>
-        ))}
+            <source src="/videos/cielo-loop.mp4" type="video/mp4" />
+          </video>
+        </motion.div>
 
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,3,0.08),rgba(3,3,3,0.22)_50%,rgba(3,3,3,0.64)_100%),linear-gradient(90deg,rgba(3,3,3,0.58)_0%,rgba(3,3,3,0.24)_38%,transparent_58%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_62%_42%,rgba(197,139,59,0.12),transparent_34%)]" />
