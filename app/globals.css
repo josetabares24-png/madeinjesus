@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Cormorant Garamond", "Playfair Display", "Iowan Old Style", Georgia, serif;
-  --font-sans: "Inter", "Aptos", "Segoe UI", Arial, sans-serif;
+  --font-display: var(--font-cormorant), "Playfair Display", "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-inter), "Aptos", "Segoe UI", Arial, sans-serif;
   --ink: #050505;
   --bone: #f5f0e8;
   --muted: #b8aa98;

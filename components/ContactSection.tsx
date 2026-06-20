@@ -18,7 +18,7 @@ export function ContactSection() {
       >
         <div>
           <p className="eyebrow mb-8 text-[#c58b3b]">Contacto / Visítanos</p>
-          <h2 className="max-w-5xl font-serif text-6xl uppercase leading-[0.8] text-[#f5f0e8] sm:text-8xl lg:text-[8.4rem]">
+          <h2 className="max-w-5xl font-serif text-5xl uppercase leading-[0.84] text-[#f5f0e8] sm:text-7xl lg:text-[6.2rem]">
             ¿Vienes por primera vez?
           </h2>
           <p className="mt-9 max-w-xl text-lg leading-8 text-[#b8aa98]">
