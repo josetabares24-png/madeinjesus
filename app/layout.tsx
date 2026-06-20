@@ -35,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${cormorantGaramond.variable} ${inter.variable}`}>
       <body>
+        <div className="grain" />
         <Navbar />
         {children}
         <Footer />

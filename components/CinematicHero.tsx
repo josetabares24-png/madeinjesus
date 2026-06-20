@@ -47,8 +47,6 @@ export function CinematicHero() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="grain" />
-
       <div className="absolute inset-0 z-0 bg-ink" style={{ perspective: 1200 }}>
         {heroSlides.map((heroSlide, slideIndex) => (
           <motion.div
