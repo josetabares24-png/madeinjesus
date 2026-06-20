@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { MouseEvent } from "react";
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
@@ -12,18 +12,16 @@ const FADE_SECONDS = 1.6;
 
 export function CinematicHero() {
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
   const tiltX = useSpring(0, { stiffness: 60, damping: 18, mass: 0.4 });
   const tiltY = useSpring(0, { stiffness: 60, damping: 18, mass: 0.4 });
 
-  useEffect(() => {
-    if (shouldReduceMotion) return;
-    const timer = setInterval(() => {
-      setIndex((current) => (current + 1) % heroSlides.length);
-    }, SLIDE_SECONDS * 1000);
-    return () => clearInterval(timer);
-  }, [shouldReduceMotion]);
+  function handleSlideComplete() {
+    if (shouldReduceMotion || paused) return;
+    setIndex((current) => (current + 1) % heroSlides.length);
+  }
 
   function handleMouseMove(event: MouseEvent<HTMLDivElement>) {
     if (shouldReduceMotion) return;
@@ -37,6 +35,7 @@ export function CinematicHero() {
   function handleMouseLeave() {
     tiltX.set(0);
     tiltY.set(0);
+    setPaused(false);
   }
 
   const slide = heroSlides[index];
@@ -45,6 +44,7 @@ export function CinematicHero() {
     <section
       className="relative h-screen min-h-screen w-full overflow-hidden bg-ink px-5 sm:px-8 lg:px-12"
       onMouseMove={handleMouseMove}
+      onMouseEnter={() => setPaused(true)}
       onMouseLeave={handleMouseLeave}
     >
       <div className="grain" />
@@ -58,8 +58,12 @@ export function CinematicHero() {
             initial={false}
             animate={
               slideIndex === index
-                ? { opacity: 1, scale: [1.04, 1.12], filter: ["blur(18px)", "blur(0px)"] }
-                : { opacity: 0, scale: 1.04, filter: "blur(12px)" }
+                ? {
+                    opacity: 1,
+                    scale: slideIndex % 2 === 0 ? [1.04, 1.13] : [1.13, 1.04],
+                    filter: ["blur(18px)", "blur(0px)"]
+                  }
+                : { opacity: 0, scale: slideIndex % 2 === 0 ? 1.04 : 1.13, filter: "blur(12px)" }
             }
             transition={{
               opacity: { duration: shouldReduceMotion ? 0 : FADE_SECONDS, ease: "easeInOut" },
@@ -122,10 +126,42 @@ export function CinematicHero() {
             Una comunidad formada por Jesús, reunida en familia y enviada con propósito.
           </p>
 
-          <p className="eyebrow text-bone/60">
-            <span className="text-bone">{String(index + 1).padStart(2, "0")}</span> /{" "}
-            {String(heroSlides.length).padStart(2, "0")}
-          </p>
+          <div className="flex items-center gap-2" role="tablist" aria-label="Diapositivas del hero">
+            {heroSlides.map((_, slideIndex) => {
+              const status = slideIndex < index ? "done" : slideIndex === index ? "active" : "upcoming";
+              return (
+                <button
+                  key={slideIndex}
+                  type="button"
+                  role="tab"
+                  aria-selected={status === "active"}
+                  aria-label={`Ir a la diapositiva ${slideIndex + 1}`}
+                  onClick={() => setIndex(slideIndex)}
+                  className="relative h-[3px] w-9 overflow-hidden rounded-full bg-white/20 transition-colors hover:bg-white/35 md:w-12"
+                >
+                  <span
+                    onAnimationEnd={status === "active" ? handleSlideComplete : undefined}
+                    className="absolute inset-y-0 left-0 block w-full bg-ember"
+                    style={
+                      status === "done"
+                        ? { transform: "scaleX(1)", transformOrigin: "left" }
+                        : status === "active"
+                        ? {
+                            transformOrigin: "left",
+                            transform: shouldReduceMotion ? "scaleX(1)" : undefined,
+                            animationName: shouldReduceMotion ? "none" : "hero-bar-fill",
+                            animationDuration: `${SLIDE_SECONDS}s`,
+                            animationTimingFunction: "linear",
+                            animationFillMode: "forwards",
+                            animationPlayState: paused ? "paused" : "running"
+                          }
+                        : { transform: "scaleX(0)", transformOrigin: "left" }
+                    }
+                  />
+                </button>
+              );
+            })}
+          </div>
 
           <div className="flex md:justify-end">
             <a
