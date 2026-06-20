@@ -73,13 +73,13 @@ export function CinematicHero() {
               fill
               priority={slideIndex === 0}
               sizes="100vw"
-              className="object-cover opacity-[0.86]"
+              className="object-cover"
             />
           </motion.div>
         ))}
 
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,3,0.14),rgba(3,3,3,0.42)_45%,#030303_100%),linear-gradient(90deg,#030303_0%,rgba(3,3,3,0.74)_29%,rgba(3,3,3,0.18)_62%,rgba(3,3,3,0.78)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_62%_42%,rgba(197,139,59,0.16),transparent_34%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,3,0.08),rgba(3,3,3,0.22)_50%,rgba(3,3,3,0.64)_100%),linear-gradient(90deg,rgba(3,3,3,0.58)_0%,rgba(3,3,3,0.24)_38%,transparent_58%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_62%_42%,rgba(197,139,59,0.12),transparent_34%)]" />
       </div>
 
       <div className="relative z-10 mx-auto flex h-full max-w-[92rem] flex-col justify-end gap-8 pb-10 pt-28 md:block md:pb-0 md:pt-0">
