@@ -16,7 +16,7 @@ export function CommunitySection() {
           className="space-y-10 lg:sticky lg:top-28 lg:self-start"
         >
           <SectionLabel index="04" label="Comunidad" />
-          <h2 className="font-serif text-5xl uppercase leading-[0.86] text-espresso sm:text-7xl lg:text-[6.6rem]">
+          <h2 className="font-serif text-4xl uppercase leading-[0.86] text-espresso sm:text-7xl lg:text-[6.6rem]">
             No camines solo.
             <span className="block text-espresso/62">Hay una casa para ti.</span>
           </h2>

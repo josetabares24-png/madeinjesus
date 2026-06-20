@@ -21,7 +21,7 @@ export function IdentitySection() {
         </div>
 
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.72fr] lg:items-end">
-          <h2 className="font-serif text-5xl uppercase leading-[0.84] text-espresso sm:text-7xl lg:text-[6.6rem]">
+          <h2 className="font-serif text-4xl uppercase leading-[0.84] text-espresso sm:text-7xl lg:text-[6.6rem]">
             No es una marca.
             <span className="block text-espresso/62">Es una identidad.</span>
           </h2>

@@ -17,7 +17,7 @@ export function ExploreSection() {
           className="mb-16 border-t border-espresso/12 pt-10"
         >
           <p className="eyebrow text-brass">Conócenos</p>
-          <h2 className="mt-4 max-w-3xl font-serif text-5xl uppercase leading-[0.86] text-espresso sm:text-6xl lg:text-7xl">
+          <h2 className="mt-4 max-w-3xl font-serif text-4xl uppercase leading-[0.86] text-espresso sm:text-6xl lg:text-7xl">
             Una casa con las puertas abiertas.
           </h2>
         </motion.div>

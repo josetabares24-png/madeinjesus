@@ -18,7 +18,7 @@ export function MessagesSection() {
           className="mb-16 grid gap-10 border-t border-espresso/12 pt-10 lg:grid-cols-[0.52fr_1fr]"
         >
           <SectionLabel index="03" label="Mensajes" />
-          <h2 className="max-w-5xl font-serif text-5xl uppercase leading-[0.86] text-espresso sm:text-7xl lg:text-[6.4rem]">
+          <h2 className="max-w-5xl font-serif text-4xl uppercase leading-[0.86] text-espresso sm:text-7xl lg:text-[6.4rem]">
             Palabras que despiertan fe.
           </h2>
         </motion.div>

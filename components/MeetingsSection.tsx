@@ -18,7 +18,7 @@ export function MeetingsSection() {
         >
           <SectionLabel index="02" label="Reuniones" />
           <div className="space-y-8">
-            <h2 className="max-w-4xl font-serif text-5xl uppercase leading-[0.86] text-espresso sm:text-7xl lg:text-[6.8rem]">
+            <h2 className="max-w-4xl font-serif text-4xl uppercase leading-[0.86] text-espresso sm:text-7xl lg:text-[6.8rem]">
               Nos reunimos para buscarle.
             </h2>
             <a
