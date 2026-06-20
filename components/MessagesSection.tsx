@@ -39,7 +39,7 @@ export function MessagesSection() {
                   alt=""
                   fill
                   sizes="(min-width: 1024px) 34vw, 100vw"
-                  className="object-cover opacity-82 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
+                  className="object-cover opacity-[0.82] transition duration-700 group-hover:scale-105 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/18 to-transparent" />
                 <button

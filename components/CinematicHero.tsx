@@ -30,19 +30,22 @@ export function CinematicHero() {
     >
       <div className="grain" />
 
-      <div className="absolute inset-0 z-0 bg-ink">
+      <div className="absolute inset-0 z-0 bg-ink" style={{ perspective: 1200 }}>
         {heroSlides.map((heroSlide, slideIndex) => (
           <motion.div
             key={heroSlide.image}
             className="absolute inset-0"
             initial={false}
-            animate={{
-              opacity: slideIndex === index ? 1 : 0,
-              scale: slideIndex === index ? 1.06 : 1
-            }}
+            animate={
+              slideIndex === index
+                ? { opacity: 1, scale: [1.05, 1.16], rotateX: [2.5, 0], rotateY: [-2, 0] }
+                : { opacity: 0, scale: 1.05, rotateX: 0, rotateY: 0 }
+            }
             transition={{
               opacity: { duration: shouldReduceMotion ? 0 : FADE_SECONDS, ease: "easeInOut" },
-              scale: { duration: shouldReduceMotion ? 0 : SLIDE_SECONDS + FADE_SECONDS, ease: "easeOut" }
+              scale: { duration: shouldReduceMotion ? 0 : SLIDE_SECONDS + FADE_SECONDS, ease: "easeOut" },
+              rotateX: { duration: shouldReduceMotion ? 0 : 1.4, ease: "easeOut" },
+              rotateY: { duration: shouldReduceMotion ? 0 : 1.4, ease: "easeOut" }
             }}
           >
             <Image
@@ -51,7 +54,7 @@ export function CinematicHero() {
               fill
               priority={slideIndex === 0}
               sizes="100vw"
-              className="object-cover opacity-78"
+              className="object-cover opacity-[0.86]"
             />
           </motion.div>
         ))}
@@ -62,7 +65,7 @@ export function CinematicHero() {
 
       <div className="relative z-10 mx-auto flex h-full max-w-[92rem] flex-col justify-end gap-8 pb-10 pt-28 md:block md:pb-0 md:pt-0">
         <div className="max-w-md md:absolute md:left-0 md:top-[25%]">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout">
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 8 }}
@@ -77,14 +80,14 @@ export function CinematicHero() {
         </div>
 
         <h1 className="max-w-[86rem] font-serif text-[14vw] font-normal uppercase leading-[0.78] text-bone drop-shadow-[0_0_38px_rgba(0,0,0,0.75)] sm:text-[11vw] md:absolute md:bottom-[21%] md:left-0 md:text-[9vw] lg:text-[8vw]">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout">
             <motion.span
               key={index}
               className="block"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.7, filter: "blur(14px)" }}
+              animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1, filter: "blur(0px)" }}
+              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.92, filter: "blur(6px)" }}
+              transition={{ duration: shouldReduceMotion ? 0.3 : 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
               {slide.title.map((line) => (
                 <span className="block" key={line}>
