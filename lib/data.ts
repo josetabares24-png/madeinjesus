@@ -73,6 +73,19 @@ export const messages = [
   }
 ];
 
+export const reels = [
+  {
+    src: "/videos/reel-1.mp4",
+    poster: "/images/reel-1-poster.jpg",
+    caption: "Tres pasos sencillos para un tiempo con Dios."
+  },
+  {
+    src: "/videos/reel-2.mp4",
+    poster: "/images/reel-2-poster.jpg",
+    caption: "Estudiando Su Palabra."
+  }
+];
+
 export const communityGroups = [
   "Jóvenes",
   "Mujeres",
