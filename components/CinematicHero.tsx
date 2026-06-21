@@ -1,11 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { MouseEvent } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion, useSpring } from "framer-motion";
 import { heroSlides } from "@/lib/data";
+import type { Pointer } from "@/components/hero/HeroCanvas";
+
+const HeroCanvas = dynamic(() => import("@/components/hero/HeroCanvas").then((m) => m.HeroCanvas), {
+  ssr: false,
+  loading: () => null
+});
 
 const SLIDE_SECONDS = 6.5;
 const FADE_SECONDS = 1.6;
@@ -17,6 +24,7 @@ export function CinematicHero() {
 
   const tiltX = useSpring(0, { stiffness: 60, damping: 18, mass: 0.4 });
   const tiltY = useSpring(0, { stiffness: 60, damping: 18, mass: 0.4 });
+  const pointerRef = useRef<Pointer>({ x: 0, y: 0 });
 
   function handleSlideComplete() {
     if (shouldReduceMotion || paused) return;
@@ -30,11 +38,15 @@ export function CinematicHero() {
     const py = (event.clientY - bounds.top) / bounds.height - 0.5;
     tiltY.set(px * -6);
     tiltX.set(py * 4);
+    pointerRef.current.x = px;
+    pointerRef.current.y = py;
   }
 
   function handleMouseLeave() {
     tiltX.set(0);
     tiltY.set(0);
+    pointerRef.current.x = 0;
+    pointerRef.current.y = 0;
     setPaused(false);
   }
 
@@ -83,6 +95,12 @@ export function CinematicHero() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,3,0.08),rgba(3,3,3,0.22)_50%,rgba(3,3,3,0.64)_100%),linear-gradient(90deg,rgba(3,3,3,0.58)_0%,rgba(3,3,3,0.24)_38%,transparent_58%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_62%_42%,rgba(197,139,59,0.12),transparent_34%)]" />
       </div>
+
+      {!shouldReduceMotion && (
+        <div className="pointer-events-none absolute inset-0 z-[6] mix-blend-screen">
+          <HeroCanvas pointerRef={pointerRef} />
+        </div>
+      )}
 
       <div className="relative z-10 mx-auto flex h-full max-w-[92rem] flex-col justify-end gap-8 pb-10 pt-28 md:block md:pb-0 md:pt-0">
         <div className="max-w-md md:absolute md:left-0 md:top-[25%]">
